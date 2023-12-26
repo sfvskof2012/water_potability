@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>水質可飲用性預測系統</title>
+</head>
+<body>
+    <form id="waterQualityForm">
+        <h1>水質可飲用性預測系統</h1>
+        <hr>
+        <button type="button" onclick="generateRandomValues()">生成全部隨機數</button>
+        <div class="form-group">
+            <label for="ph">酸鹼值 (pH) : (範圍0 - 11)</label>
+            <input type="text" id="ph" name="ph" placeholder="請輸入酸鹼值" required min="0" max="11">
+        </div>
+        
+        <div class="form-group">
+            <label for="hardness">硬度 (Hardness) : (範圍47.7 - 323)</label>
+            <input type="text" id="hardness" name="hardness" placeholder="請輸入硬度" required min="47.7" max="323">
+        </div>
+        
+        <div class="form-group">
+            <label for="solids">固體含量 (Solids) : (範圍 321 - 61.2K)</label>
+            <input type="text" id="solids" name="solids" placeholder="請輸入固體含量" required min="321" max="61200">
+        </div>
+        
+        <div class="form-group">
+            <label for="chloramines">氯胺 (Chloramines) : (範圍 0.35 - 8.12)</label>
+            <input type="text" id="chloramines" name="chloramines" placeholder="請輸入氯胺含量" required min="0.35" max="8.12">
+        </div>
+        
+        <div class="form-group">
+            <label for="sulfate">硫酸鹽 (Sulfate) : (範圍 129 - 481)</label>
+            <input type="text" id="sulfate" name="sulfate" placeholder="請輸入硫酸鹽含量" required min="129" max="481">
+        </div>
+        
+        <div class="form-group">
+            <label for="conductivity">導電度 (Conductivity) : (範圍 181 - 753)</label>
+            <input type="text" id="conductivity" name="conductivity" placeholder="請輸入導電度" required min="181" max="753">
+        </div>
+        
+        <div class="form-group">
+            <label for="organicCarbon">有機碳 (Organic Carbon) : (範圍 2.2 - 28.3)</label>
+            <input type="text" id="organicCarbon" name="organicCarbon" placeholder="請輸入有機碳含量" required min="2.2" max="28.3">
+        </div>
+        
+        <div class="form-group">
+            <label for="trihalomethanes">三鹵甲烷 (Trihalomethanes) : (範圍 0.74 - 124)</label>
+            <input type="text" id="trihalomethanes" name="trihalomethanes" placeholder="請輸入三鹵甲烷含量" required min="0.74" max="124">
+        </div>
+        
+        <div class="form-group">
+            <label for="turbidity">濁度 (Turbidity) : (範圍 1.45 - 6.74)</label>
+            <input type="text" id="turbidity" name="turbidity" placeholder="請輸入濁度" required min="1.45" max="6.74">
+        </div>
+        <button type="button" onclick="submitForm()">提交</button>
+        <hr>
+        <footer>&copy; 4A9G0120@stust.edu.tw製作 2023/12/09</footer>
+    </form>
+    <div id="submittedValuesContainer" class="submitted-values-container"></div>
+    
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()" title="按 Esc 鍵或點擊 x 關閉">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+        <!-- 顯示專題說明的浮動視窗 -->
+        <div id="descriptionModal" class="modal">
+            <span class="close" onclick="closeDescriptionModal()" title="按 Esc 鍵或點擊 x 關閉">&times;</span>
+            <div id="projectDescription" class="modal-description">
+                <h1>專題說明</h1>
+                <hr>
+                <p>
+                    <strong>專題題目:</strong> 水質適飲性預測系統<br><br>
+                    <strong>指導教授:</strong> 鄭錦楸 <br><br>
+                    <strong>專題目標:</strong> 本研究構建了一個初步的水質分類預測模型，運用支持向量機 (SVM) 算法判別水樣本的飲用適宜性。此為探索性的初期實踐，模型的預測精度和泛化能力尚待進一步提高。<br><br>
+                    <strong>資料集名稱:</strong> Water Potability Dataset (取自 <a href="https://www.kaggle.com/datasets/devanshibavaria/water-potability-dataset-with-10-parameteres" target="_blank">Kaggle</a>)<br><br>
+                    <strong>機器學習名稱:</strong> 支持向量機 (SVM)<br><br>
+                    <strong>準確率:</strong> 71.96%
+                    
+                </p>
+            </div>
+        </div>
+        
+        
+        <div  class="buttons-container">
+            <!-- 顯示圖片的按鈕 -->
+            <button type="button" onclick="openModal('images/Water_potability_Model.png')">模型效能</button>
+            <!-- 顯示專題說明的按鈕 -->
+            <button type="button" onclick="openDescriptionModal()">專題說明</button>
+        </div>
+            
+    <script src="script.js"></script>
+</body>
+</html>
